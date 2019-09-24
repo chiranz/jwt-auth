@@ -14,7 +14,8 @@ const PORT = 3000;
   const apolloServer = new ApolloServer({
     schema: await buildSchema({
       resolvers: [UserResolver]
-    })
+    }),
+    context: ({ req, res }) => ({ req, res })
   });
   apolloServer.applyMiddleware({ app });
   app.listen(PORT, () => {
