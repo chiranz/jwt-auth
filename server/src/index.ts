@@ -11,7 +11,7 @@ import { User } from "./entity/User";
 import { createAccessToken, createRefreshToken } from "./auth";
 import { sendRefreshToken } from "./sendRefreshToken";
 
-const PORT = 3000;
+const PORT = 3030;
 
 (async () => {
   const app = express();
