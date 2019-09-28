@@ -53,6 +53,14 @@ export type User = {
   email: Scalars['String'],
   tokenVersion: Scalars['Float'],
 };
+export type ByeQueryVariables = {};
+
+
+export type ByeQuery = (
+  { __typename?: 'Query' }
+  & Pick<Query, 'bye'>
+);
+
 export type HelloQueryVariables = {};
 
 
@@ -97,6 +105,21 @@ export type GetUsersQuery = (
   )> }
 );
 
+export const ByeDocument = gql`
+    query Bye {
+  bye
+}
+    `;
+
+    export function useByeQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<ByeQuery, ByeQueryVariables>) {
+      return ApolloReactHooks.useQuery<ByeQuery, ByeQueryVariables>(ByeDocument, baseOptions);
+    }
+      export function useByeLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<ByeQuery, ByeQueryVariables>) {
+        return ApolloReactHooks.useLazyQuery<ByeQuery, ByeQueryVariables>(ByeDocument, baseOptions);
+      }
+      
+export type ByeQueryHookResult = ReturnType<typeof useByeQuery>;
+export type ByeQueryResult = ApolloReactCommon.QueryResult<ByeQuery, ByeQueryVariables>;
 export const HelloDocument = gql`
     query Hello {
   hello
