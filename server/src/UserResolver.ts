@@ -36,7 +36,7 @@ export class UserResolver {
     return `Good by user id ${payload!.userId}`;
   }
   @Query(() => [User])
-  getUsers() {
+  users() {
     return User.find();
   }
   @Mutation(() => Boolean)
