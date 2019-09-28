@@ -7,6 +7,7 @@ import { UserResolver } from "./UserResolver";
 import { createConnection } from "typeorm";
 import cookieParser from "cookie-parser";
 import { verify } from "jsonwebtoken";
+import cors from "cors";
 import { User } from "./entity/User";
 import { createAccessToken, createRefreshToken } from "./auth";
 import { sendRefreshToken } from "./sendRefreshToken";
@@ -15,6 +16,12 @@ const PORT = 3030;
 
 (async () => {
   const app = express();
+  app.use(
+    cors({
+      origin: "http://localhost:3000",
+      credentials: true
+    })
+  );
   app.use(cookieParser());
   app.get("/", (_req, res) => res.send("hello"));
   // restricted route for postman
@@ -48,7 +55,7 @@ const PORT = 3030;
     }),
     context: ({ req, res }) => ({ req, res })
   });
-  apolloServer.applyMiddleware({ app });
+  apolloServer.applyMiddleware({ app, cors: false });
   app.listen(PORT, () => {
     console.log(`Express server started at Port:${PORT}`);
   });
