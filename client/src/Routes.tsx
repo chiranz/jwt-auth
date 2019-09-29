@@ -11,7 +11,16 @@ const Routes: React.FC = () => {
       <div className="main">
         <div className="header">
           <div>
-            <h1 style={{ color: "brown" }}>Jwt Auth</h1>
+            <Link
+              to="/"
+              style={{
+                color: "brown",
+                fontWeight: "bold",
+                fontSize: "2rem"
+              }}
+            >
+              Jwt Auth
+            </Link>
           </div>
           <div className="links">
             <Link to="/login">Login</Link>
